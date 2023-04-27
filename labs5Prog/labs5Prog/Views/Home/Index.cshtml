@@ -1,0 +1,52 @@
+﻿@using labs5Prog.Models;
+@model IEnumerable<Course>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Список Курсов валют</h2>
+<p><a asp-action="Create">Добавить Курсы валют</a></p>
+<table class="table">
+    <tr>
+        <th>
+            Валюта
+        </th>
+        <th>
+            Банк
+        </th>
+        <th>
+            Дата
+        </th>
+        <th>
+            Покупка
+        </th>
+        <th>
+            Продажа
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Currency?.Code</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    @item.Bank
+                </a>
+                
+            </td>
+            <td>@item.CreatedDate</td>
+            <td>@item.buy</td>
+            <td>@item.sell</td>
+            <td>
+                <a asp-action="Edit" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+            </td>
+            <td>
+                <form asp-controller="Home" asp-action="Delete" method="get" asp-route-id="@item.Id">
+                    <input type="submit" value="Удалить" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>

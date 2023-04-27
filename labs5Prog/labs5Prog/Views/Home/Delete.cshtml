@@ -1,0 +1,42 @@
+﻿@model labs5Prog.Models.Course
+
+@{
+    ViewData["Title"] = "View";
+}
+<h4>Удалить курс</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteConfirm" asp-controller="Home" method="post" asp-route-id="@Model.Id">
+            <div class="form-group">
+                @Model.Id
+            </div>
+            <div class="form-group">
+                @Model.Bank
+            </div>
+            <div class="form-group">
+                @Model.CreatedDate
+            </div>
+            <div class="form-group">
+                @Model.buy
+            </div>
+            <div class="form-group">
+                @Model.sell
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Удалить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
